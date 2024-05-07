@@ -28,7 +28,7 @@ export default async function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <NextAuthProvider>
-        <NavBar />
+          <NavBar />
           <div className="relative flex flex-col h-screen w-screen bg-black md:items-center md:justify-center md:bg-transparent">
             <Image
               src={BackgroundImage}

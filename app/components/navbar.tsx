@@ -14,10 +14,10 @@ interface linkProps {
 
 const links: linkProps[] = [
   { name: "Home", href: "/home" },
-  { name: "Tv Shows", href: "/home/shows" },
-  { name: "Movies", href: "/home/movies" },
-  { name: "Recently Added", href: "/home/recently" },
-  { name: "My List", href: "/home/user/list" },
+  { name: "Tv Shows", href: "/shows" },
+  { name: "Movies", href: "/movies" },
+  { name: "Recently Added", href: "/recently" },
+  { name: "My List", href: "/user/list" },
 ];
 
 export default function Navbar() {
