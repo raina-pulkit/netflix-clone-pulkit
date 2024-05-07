@@ -1,50 +1,13 @@
-// import { PrismaAdapter } from "@auth/prisma-adapter";
-// import prisma fro./db/db";
-
-// export const {
-//   handlers: { GET, POST },
-//   auth,
-//   signIn,
-//   signOut,
-// } = NextAuth({
-//   providers: [
-//     GitHubProvider({
-//       clientId: process.env.GITHUB_ID as string,
-//       clientSecret: process.env.GITHUB_SECRET as string,
-//     }),
-//     GoogleProvider({
-//       clientId: process.env.GOOGLE_ID as string,
-//       clientSecret: process.env.GOOGLE_SECRET as string,
-//       authorization: {
-//         params: {
-//           prompt: "consent",
-//           access_type: "online",
-//           response_type: "code",
-//         },
-//       },
-//     }),
-//     // EmailProvider({
-//     //   server: {
-//     //     host: process.env.EMAIL_SERVER_HOST,
-//     //     port: process.env.EMAIL_SERVER_PORT,
-//     //     auth: {
-//     //       user: process.env.EMAIL_SERVER_USER,
-//     //       pass: process.env.EMAIL_SERVER_PASSWORD,
-//     //     },
-//     //   },
-//     //   from: process.env.EMAIL_FROM,
-//     // }),
-//   ],
-// });
-
-import { PrismaAdapter } from "@auth/prisma-adapter";
 import prisma from "./db";
 import GitHubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google";
-import EmailProvider from "next-auth/providers/nodemailer";
+import EmailProvider from "next-auth/providers/email";
+import { NextAuthOptions } from "next-auth";
+import { PrismaAdapter } from "@next-auth/prisma-adapter";
 
 export const authOptions = {
   adapter: PrismaAdapter(prisma),
+  secret: process.env.NEXTAUTH_SECRET,
   providers: [
     GitHubProvider({
       clientId: process.env.GITHUB_ID as string,
@@ -66,4 +29,4 @@ export const authOptions = {
       from: process.env.EMAIL_FROM,
     }),
   ],
-};
+} satisfies NextAuthOptions;
